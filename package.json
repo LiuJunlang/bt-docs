@@ -1,0 +1,14 @@
+{
+  "name": "bt-docs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bluetooth Technical Deep Dive - Profile & Protocol Analysis Notes",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.5.0"
+  }
+}
