@@ -14,7 +14,8 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: 'Profile 解析', link: '/profiles/' },
-      { text: 'A2DP 实战', link: '/a2dp/' }
+      { text: 'A2DP 实战', link: '/a2dp/' },
+      { text: '驱动开发', link: '/driver/' }
     ],
 
     sidebar: {
@@ -23,7 +24,11 @@ export default defineConfig({
         { text: '3DSP — 3D 同步 Profile', link: '/profiles/3dsp' }
       ]}],
       '/a2dp/': [{ text: 'A2DP 实战分析', items: [
-        { text: 'UART 波特率与音频传输带宽', link: '/a2dp/uart-baudrate-analysis' }
+        { text: '蓝牙芯片 UART 波特率选择指南', link: '/a2dp/uart-baudrate-analysis' }
+      ]}],
+      '/driver/': [{ text: '驱动开发', items: [
+        { text: '概览', link: '/driver/' },
+        { text: 'UART DMA 传输机制详解', link: '/driver/uart-dma' }
       ]}]
     },
 
