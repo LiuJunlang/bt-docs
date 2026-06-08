@@ -24,10 +24,11 @@ export default defineConfig({
         { text: '3DSP — 3D 同步 Profile', link: '/profiles/3dsp' }
       ]}],
       '/a2dp/': [{ text: 'A2DP 实战分析', items: [
-        { text: '蓝牙芯片 UART 波特率选择指南', link: '/a2dp/uart-baudrate-analysis' }
+        { text: '概览', link: '/a2dp/' }
       ]}],
       '/driver/': [{ text: '驱动开发', items: [
         { text: '概览', link: '/driver/' },
+        { text: '蓝牙芯片 UART 波特率选择指南', link: '/driver/uart-baudrate-analysis' },
         { text: 'UART DMA 传输机制详解', link: '/driver/uart-dma' }
       ]}]
     },
