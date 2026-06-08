@@ -13,13 +13,17 @@ export default defineConfig({
 
     nav: [
       { text: '首页', link: '/' },
-      { text: 'Profile 解析', link: '/profiles/' }
+      { text: 'Profile 解析', link: '/profiles/' },
+      { text: 'A2DP 实战', link: '/a2dp/' }
     ],
 
     sidebar: {
       '/profiles/': [{ text: 'Profile 深度解析', items: [
         { text: '概览', link: '/profiles/' },
         { text: '3DSP — 3D 同步 Profile', link: '/profiles/3dsp' }
+      ]}],
+      '/a2dp/': [{ text: 'A2DP 实战分析', items: [
+        { text: 'UART 波特率与音频传输带宽', link: '/a2dp/uart-baudrate-analysis' }
       ]}]
     },
 
