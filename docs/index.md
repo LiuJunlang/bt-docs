@@ -17,10 +17,15 @@ features:
   - icon: 📡
     title: Profile 深度解析
     details: 从 3DSP 到 LE Audio，逐层拆解蓝牙 Profile 的设计哲学、消息格式与实现细节
+  - icon: 📶
+    title: BLE 协议栈
+    details: Legacy / Extended Advertising、LE Audio 广播决策 —— HCI 到空口 PDU 的完整映射
+    link: /le-adv/
+    linkText: 开始阅读
   - icon: 🔬
-    title: 协议栈剖析
-    details: HCI 命令、LMP 交互、Controller 行为 —— 打通从 Host 到 Baseband 的全链路
+    title: A2DP 实战分析
+    details: 音频编解码、延迟分析、抓包实战 —— 打通 A2DP 全链路排查能力
   - icon: ⚡
-    title: 实战经验沉淀
-    details: 断连排查、音频卡顿、抓包分析 —— 把排查经验固化为可复用的知识库
+    title: 驱动开发
+    details: UART DMA、波特率选择、芯片适配 —— 把驱动层经验固化为可复用知识
 ---

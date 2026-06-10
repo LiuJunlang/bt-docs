@@ -14,6 +14,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: 'Profile 解析', link: '/profiles/' },
+      { text: 'BLE 协议栈', link: '/le-adv/' },
       { text: 'A2DP 实战', link: '/a2dp/' },
       { text: '驱动开发', link: '/driver/' }
     ],
@@ -22,6 +23,10 @@ export default defineConfig({
       '/profiles/': [{ text: 'Profile 深度解析', items: [
         { text: '概览', link: '/profiles/' },
         { text: '3DSP — 3D 同步 Profile', link: '/profiles/3dsp' }
+      ]}],
+      '/le-adv/': [{ text: 'BLE 协议栈', items: [
+        { text: '概览', link: '/le-adv/' },
+        { text: 'Extended Advertising 从 HCI 到空口 PDU 的完整映射', link: '/le-adv/hci-to-air-pdu-mapping' }
       ]}],
       '/a2dp/': [{ text: 'A2DP 实战分析', items: [
         { text: '概览', link: '/a2dp/' }
