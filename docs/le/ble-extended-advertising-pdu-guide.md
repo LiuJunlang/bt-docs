@@ -8,7 +8,7 @@
 
 | PDU | 发送信道 | 作用 |
 |-----|---------|------|
-| **ADV_EXT_IND** | Primary (37/38/39) | 极短，仅含 **AuxPtr**（指向 Secondary 信道的指针） |
+| **ADV_EXT_IND** | Primary (37/38/39) | 极短，核心含 **AuxPtr**（指向 Secondary 信道的指针），还可携带 AdvA、ADI、TxPower 等字段 |
 | **AUX_ADV_IND** | Secondary (0~36) | 承载**实际的广播数据** |
 | **AUX_SYNC_IND** | Secondary (0~36) | **周期性广播**，建立同步后周期性发送 |
 | **AUX_CHAIN_IND** | Secondary (0~36) | **链式传输**，数据超长时继续拼接 |
@@ -27,7 +27,7 @@ ADV_EXT_IND (Primary) → AUX_ADV_IND (Secondary)
 
 - **AUX_ADV_IND 属性**：Non-Connectable + Non-Scannable
 - **用途**：普通的大数据量广播
-- ADV_EXT_IND 只有几个字节，AUX_ADV_IND 可携带最多 **255 字节** 数据（Legacy 仅 31 字节）
+- ADV_EXT_IND 只有几个字节，AUX_ADV_IND 可携带最多 **255 字节** 数据（Common Extended Advertising Payload 上限，含 Extended Header，实际 AdvData 略少；Legacy 仅 31 字节）
 
 ### 场景 ②：可扫描广播（Scannable）
 
@@ -97,7 +97,7 @@ ADV_EXT_IND → AUX_ADV_IND → AUX_CONNECT_REQ → AUX_CONNECT_RSP
 
 | 组合 | AUX_ADV_IND 属性 | Secondary 信道完整序列 | 允许 Chain? | 典型用途 |
 |------|------------------|----------------------|------------|---------|
-| ① 基础广播 | Non-Conn + Non-Scan | `AUX_ADV_IND` | ❌ | 普通大数据广播 |
+| ① 基础广播 | Non-Conn + Non-Scan | `AUX_ADV_IND` | 可 chain 但本场景未用 | 普通大数据广播 |
 | ①+Chain | Non-Conn + Non-Scan | `AUX_ADV_IND → AUX_CHAIN_IND...` | ✅* | 超长数据 (>255B) |
 | ② 可扫描 | Scannable | `AUX_ADV_IND → AUX_SCAN_REQ → AUX_SCAN_RSP [→ AUX_CHAIN_IND]` | ✅** | Scanner 请求更多数据 |
 | ③ 可连接 | Connectable | `AUX_ADV_IND → AUX_CONNECT_REQ → AUX_CONNECT_RSP` | ❌ | 建立连接 |
@@ -125,7 +125,7 @@ ADV_EXT_IND → AUX_ADV_IND → AUX_CONNECT_REQ → AUX_CONNECT_RSP
 | "Scannable 场景完全不能 chain" | AUX_ADV_IND 不能 chain，但 **AUX_SCAN_RSP 可以 chain** |
 | "Connectable 场景可以 chain 后再连接" | **Connectable 的 AUX_ADV_IND 完全不能 chain**，连接时序固定 |
 | "Periodic 场景 AUX_ADV_IND 用 AuxPtr 指向 AUX_SYNC_IND" | AUX_ADV_IND 用 **SyncInfo 字段**（不是 AuxPtr）传递同步参数 |
-| "Connectable + Scannable 可以同时存在" | **这两个属性互斥**，BLE 规范不允许同时设置 |
+| "Connectable + Scannable 可以同时存在" | 在 **Extended Advertising 的 AUX_ADV_IND 中**这两个属性互斥（Legacy Advertising 的 ADV_IND 则允许同时设置） |
 
 ---
 
@@ -136,7 +136,6 @@ ADV_EXT_IND → AUX_ADV_IND → AUX_CONNECT_REQ → AUX_CONNECT_RSP
 | 第 1 轮 | 初始版本，错误地认为 Connectable 和 Scannable 场景下 AUX_ADV_IND 可以 chain |
 | 第 2 轮 | 修正：Connectable 和 Scannable 的 AUX_ADV_IND 不能 chain；Periodic 场景 SyncInfo 不是 AuxPtr；AUX_SYNC_IND 可以 chain |
 | 第 3 轮 | 修正：AUX_SCAN_RSP **可以** chain；删除不存在的 "Connectable + Scannable" 组合 |
+| 第 4 轮 | 修正：ADV_EXT_IND 描述不再说"仅含 AuxPtr"，补充可携带的其他字段；255 字节标注为 Common Extended Advertising Payload 上限含 Header；基础广播 chain 列区分"未用"与"不能"；Connectable+Scannable 互斥补充 Legacy Advertising 的例外 |
 
 ---
-
-*本文档由 AI 辅助整理，经人工审核确认技术细节。*
