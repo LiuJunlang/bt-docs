@@ -28,6 +28,7 @@ export default defineConfig({
         { text: '概览', link: '/le/' },
         { text: 'Extended Advertising 从 HCI 到空口 PDU 的完整映射', link: '/le/hci-to-air-pdu-mapping' },
         { text: 'BLE 5.0+ 扩展广播 PDU 组合与使用场景详解', link: '/le/ble-extended-advertising-pdu-guide' },
+        { text: 'BLE 5.4 PAwR PDU 完整交互指南', link: '/le/bluetooth-5.4-pawr-pdu-guide' },
         { text: 'BLE CRC-24 完全解析', link: '/le/ble-crc24' }
       ]}],
       '/a2dp/': [{ text: 'A2DP 实战分析', items: [
